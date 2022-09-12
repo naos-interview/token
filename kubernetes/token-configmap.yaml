@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: token-config
+  labels:
+    app: token
+data:
+  POSTGRES_HOST: postgres-service
+  POSTGRES_DATABASE: postgresdb
+  POSTGRES_USERNAME: postgresadmin
+  POSTGRES_PASSWORD: admin12345
+  POSTGRES_PORT: "30960"

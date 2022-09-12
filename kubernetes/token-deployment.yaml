@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: token-deployment
+spec:
+  selector:
+    matchLabels:
+      app: token
+  template:
+    metadata:
+      labels:
+        app: token
+    spec:
+      containers:
+      - name: token
+        image: dizzycoder1112/token
+        resources:
+          limits:
+            memory: "4Gi"
+            cpu: "1"
+        ports:
+        - containerPort: 50053
+        envFrom:
+            - configMapRef:
+                name: token-config
