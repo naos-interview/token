@@ -18,7 +18,7 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @GrpcMethod('TokenAdressService', 'createTokenAddress')
+  @GrpcMethod('ContractAddressService', 'createContractAddress')
   createTokenAddress(
     req: CreateTokenAddressRequest,
     metadata: any,

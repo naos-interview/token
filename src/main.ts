@@ -8,7 +8,7 @@ const microServiceOptions = {
   options: {
     url: 'localhost:50053',
     package: 'contractAddress',
-    protoPath: join(__dirname, '../src/tokenAddress.proto'),
+    protoPath: join(__dirname, '../src/contractAddress.proto'),
   },
 };
 
