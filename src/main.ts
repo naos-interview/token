@@ -7,7 +7,7 @@ const microServiceOptions = {
   transport: Transport.GRPC,
   options: {
     url: 'localhost:50053',
-    package: 'tokenAddress',
+    package: 'contractAddress',
     protoPath: join(__dirname, '../src/tokenAddress.proto'),
   },
 };
