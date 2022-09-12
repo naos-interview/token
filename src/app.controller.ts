@@ -5,9 +5,6 @@ import { AppService } from './app.service';
 interface CreateTokenAddressRequest {
   tokenAddress: string;
 }
-interface ISumOfNumberArray {
-  sum: number;
-}
 @Controller()
 export class AppController {
   private logger = new Logger('AppController');
@@ -18,12 +15,18 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @GrpcMethod('TokenAdressService', 'createTokenAddress')
-  createTokenAddress(
-    req: CreateTokenAddressRequest,
-    metadata: any,
-  ): ISumOfNumberArray {
-    this.logger.log(req);
-    return { sum: 1 };
+  @GrpcMethod('ContractAddressService', 'createContractAddress')
+  createTokenAddress(req: CreateTokenAddressRequest) {
+    this.logger.log('create contractAddress:' + req.tokenAddress);
+    this.appService.createContractAddress(req.tokenAddress);
+    return { success: true };
+  }
+
+  @GrpcMethod('TokenAdressService', 'getAllContractAddress')
+  getAllContractAddress() {
+    this.logger.log('get contractAddress');
+    return {
+      data: ['sdjkcflsjd'],
+    };
   }
 }
