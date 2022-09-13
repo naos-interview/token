@@ -1,19 +1,15 @@
 import { Controller, Get, Logger } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
-import { AppService } from './app.service';
+import { ContractService } from './contract.service';
 
 interface CreateTokenAddressRequest {
   tokenAddress: string;
 }
-@Controller()
-export class AppController {
-  private logger = new Logger('AppController');
-  constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
+@Controller()
+export class ContractCOntroller {
+  private logger = new Logger('ContractCOntroller');
+  constructor(private readonly appService: ContractService) {}
 
   @GrpcMethod('ContractAddressService', 'createContractAddress')
   createTokenAddress(req: CreateTokenAddressRequest) {
@@ -22,11 +18,11 @@ export class AppController {
     return { success: true };
   }
 
-  @GrpcMethod('TokenAdressService', 'getAllContractAddress')
-  getAllContractAddress() {
-    this.logger.log('get contractAddress');
+  @GrpcMethod('ContractAddressService', 'getAllContractAddress')
+  async getAllContractAddress() {
+    const data = await this.appService.getAllCOntractAddress();
     return {
-      data: ['sdjkcflsjd'],
+      data,
     };
   }
 }

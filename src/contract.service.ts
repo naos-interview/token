@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { Contract } from './db/entities/contract.entity';
 
 @Injectable()
-export class AppService {
+export class ContractService {
   private logger = new Logger('AppService');
 
   constructor(
@@ -17,6 +17,10 @@ export class AppService {
       address,
     });
     await this.contractRepo.save(newContract);
+  }
+
+  async getAllCOntractAddress() {
+    return await this.contractRepo.find();
   }
   getHello(): string {
     return 'Hello World!';
