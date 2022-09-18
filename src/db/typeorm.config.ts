@@ -17,5 +17,3 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   }),
   inject: [ConfigService],
 };
-
-console.log(typeOrmAsyncConfig.dataSourceFactory);
