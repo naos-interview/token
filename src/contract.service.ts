@@ -22,7 +22,4 @@ export class ContractService {
   async getAllCOntractAddress() {
     return await this.contractRepo.find();
   }
-  getHello(): string {
-    return 'Hello World!';
-  }
 }
